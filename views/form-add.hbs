@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="style/home.css">
+    <title>Add</title>
+</head>
+<body>
+    <h1>Thêm</h1>
+    <form method="POST" action="/add">
+                          <div class="form-group">
+                            <label for="productName">Stt: </label>
+                            <input type="number" class="form-control" name="stt"
+                              >
+                          </div>
+                          <div class="form-group">
+                            <label for="productName">Tên : </label>
+                            <input type="text" class="form-control" name="ten"
+                              >
+                          </div>
+                          <div class="form-group">
+                            <label for="productName">Lớp: </label>
+                            <input type="number" class="form-control" name="lop"
+                              >
+                          </div>
+                          <div class="form-group">
+                            <label for="productName">Điểm TB: </label>
+                            <input type="number" class="form-control" name="diemtb"
+                              >
+                          </div>
+                          
+                          <div class="modal-footer">
+                            <button type="submit" class="btn btn-primary"> Thêm </button>
+                          </div>
+                        </form>
+</body>
+</html>

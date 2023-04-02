@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="style/home.css">
+  <title>Danh Sach </title>
+</head>
+
+<body>
+  <h1 style="text-align: center;">Danh sách sinh viên</h1>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-8">
+        <a href="/form-add"><button type="submit" class="btn btn-primary">Thêm</button> </a>
+        <table class="table table-hover table-striped">
+          <thead>
+            <tr>
+              <th>Stt</th>
+              <th>Tên </th>
+              <th>Lớp</th>
+              <th>Điểm TB</th>
+              
+            </tr>
+          </thead>
+          {{#each sinhviens}}
+          <tbody>
+            <tr>
+              <td> {{this.stt}} </td>
+              <td> {{this.ten}}</td>
+              <td> {{this.lop}}</td>
+              <td> {{this.diemtb}}</td>
+              <td class="row">
+                {{!-- modal Xoa  role="dialog" --}}
+                <div class="col-3">
+                  <button type="button"  data-toggle="modal" class="btn btn-primary"
+                    data-target="#delete{{this._id}}">
+                    Delete
+                  </button>
+                  <div class="modal fade" id="delete{{this._id}}" tabindex="-1" aria-labelledby="delete{{this._id}}"
+                    aria-hidden="true">
+                    <div class="modal-dialog">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <h1 class="modal-title fs-5" id="delete{{this._id}}">Delete</h1>
+                          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                          Do you want delete ?
+                        </div>
+                        <div class="modal-footer">
+                          <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
+                          <form action="/delete" method="post">
+                            <input type="hidden" value={{this._id}} name="id">
+                            <button type="submit" class="btn btn-primary">Yes</button>
+                          </form>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                {{!-- Modal Edit tabindex="-1"--}}
+                <div class="col-4">
+                  <button type="button" class="btn btn-primary" data-toggle="modal"
+                    data-target="#edit{{this._id}}">
+                    edit
+                  </button>
+                  <div class="modal fade" id="edit{{this._id}}"  aria-labelledby="edit{{this._id}}"
+                    aria-hidden="true">
+                    <div class="modal-dialog">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <h1 class="modal-title fs-5" id="edit{{this._id}}">Edit ?</h1>
+                          <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                          <p>Do you want edit ?</p>
+                          <form action="/edit" method="post">
+                            <div class="mb-3">
+                              <label class="form-label">Stt </label>
+                              <input value={{this.stt}} name="stt" type="text" class="form-control" id="stt"
+                                placeholder="Enter name product">
+                            </div>
+                            <div class="mb-3">
+                              <label  class="form-label">Tên </label>
+                              <input value={{this.ten}} name="ten" type="text" class="form-control" id="ten"
+                                placeholder="">
+                            </div>
+                            <div class="mb-3">
+                              <label class="form-label">Lớp </label>
+                              <input value={{this.lop}} name="lop" type="text" class="form-control" id="lop"
+                                placeholder="">
+                            </div>
+                            <div class="mb-3">
+                              <label  class="form-label">Điểm TB</label>
+                              <input value={{this.diemtb}} name="diemtb" type="text" class="form-control" id="diemtb"
+                                placeholder="">
+                            </div>
+                            <input type="hidden" value={{this._id}} name="id">
+                            <button type="submit" class="btn btn-primary">Yes</button>
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
+                          </form>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </td>
+            </tr>
+            
+          </tbody>
+          {{/each}}
+        </table>
+</body>
+
+</html>
